@@ -89,19 +89,23 @@ class _JournalScreenState extends State<JournalScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: _moods.map((mood) {
         final isSelected = _selectedMood == mood;
-        return GestureDetector(
-          onTap: () => setState(() => _selectedMood = mood),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: isSelected ? AppTheme.primaryColor.withOpacity(0.1) : Colors.transparent,
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: isSelected ? AppTheme.primaryColor : Colors.white10,
+        return Flexible(
+          child: GestureDetector(
+            onTap: () => setState(() => _selectedMood = mood),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: isSelected ? AppTheme.primaryColor.withOpacity(0.1) : Colors.transparent,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: isSelected ? AppTheme.primaryColor : Colors.white10,
+                ),
               ),
+              child: Text(mood, style: const TextStyle(fontSize: 24)),
             ),
-            child: Text(mood, style: const TextStyle(fontSize: 24)),
           ),
         );
       }).toList(),

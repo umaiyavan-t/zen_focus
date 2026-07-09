@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../home/home_screen.dart';
-import '../tasks/tasks_screen.dart';
+import '../tasks/planner_landing_screen.dart';
 import '../focus/focus_screen.dart';
 import '../profile/profile_screen.dart';
 import '../journal/journal_screen.dart';
@@ -20,7 +20,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const FocusScreen(),
-    const TasksScreen(),
+    const PlannerLandingScreen(),
     const JournalScreen(),
     const ProfileScreen(),
   ];
@@ -34,9 +34,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(top: 8, bottom: 20),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppTheme.backgroundColor,
-          border: const Border(top: BorderSide(color: Colors.white10, width: 0.5)),
+          border: Border(top: BorderSide(color: Colors.white10, width: 0.5)),
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,

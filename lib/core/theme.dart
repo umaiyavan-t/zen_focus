@@ -17,12 +17,12 @@ class AppTheme {
       brightness: Brightness.dark,
       scaffoldBackgroundColor: backgroundColor,
       primaryColor: primaryColor,
-      colorScheme: ColorScheme.dark(
+      colorScheme: const ColorScheme.dark(
         primary: primaryColor,
         secondary: secondaryColor,
         surface: surfaceColor,
         background: backgroundColor,
-        error: const Color(0xFFCF6679),
+        error: Color(0xFFCF6679),
       ),
       textTheme: GoogleFonts.outfitTextTheme(
         TextTheme(

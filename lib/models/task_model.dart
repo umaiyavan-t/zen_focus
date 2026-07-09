@@ -16,10 +16,53 @@ class Task extends HiveObject {
   @HiveField(3)
   DateTime createdAt;
 
+  // ── Planner fields ────────────────────────────────────────────────────────
+
+  /// The day this task is scheduled for (null = unscheduled, shows in ALL tab only).
+  @HiveField(4)
+  DateTime? scheduledDate;
+
+  /// 0 = Low, 1 = Medium, 2 = High
+  @HiveField(5)
+  int priority;
+
+  /// 24h time string e.g. "09:00" for time-blocking.
+  @HiveField(6)
+  String? timeSlot;
+
+  /// If true, this task resets its checkbox every day (completedDates tracks history).
+  @HiveField(7)
+  bool isRecurring;
+
+  /// Estimated duration in minutes.
+  @HiveField(8)
+  int? estimatedMinutes;
+
+  /// Most Important Task flag for a given day.
+  @HiveField(9)
+  bool isMIT;
+
+  /// For recurring tasks — stores "yyyy-MM-dd" keys for each day completed.
+  /// Enables full historical analysis without losing any past data.
+  @HiveField(10)
+  List<String> completedDates;
+
+  /// If true, this is scheduled as a weekly focus intention rather than a daily task.
+  @HiveField(11)
+  bool isWeekly;
+
   Task({
     required this.id,
     required this.title,
     this.isCompleted = false,
     required this.createdAt,
-  });
+    this.scheduledDate,
+    this.priority = 1,
+    this.timeSlot,
+    this.isRecurring = false,
+    this.estimatedMinutes,
+    this.isMIT = false,
+    List<String>? completedDates,
+    this.isWeekly = false,
+  }) : completedDates = completedDates ?? [];
 }
