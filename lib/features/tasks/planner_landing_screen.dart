@@ -505,6 +505,40 @@ class _PlannerLandingScreenState extends State<PlannerLandingScreen> {
                 weeklyCompleted: weeklyCompleted,
                 weeklyTotal: weeklyTotal,
               ),
+              const SizedBox(height: 12),
+
+              // View All Tasks Highlighted Link
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const TasksScreen()),
+                ),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  decoration: BoxDecoration(
+                    color: AppTheme.primaryColor.withOpacity(0.08),
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(color: AppTheme.primaryColor.withOpacity(0.2)),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.list_rounded, size: 18, color: AppTheme.primaryColor),
+                      const SizedBox(width: 8),
+                      Text(
+                        'VIEW ALL TASKS',
+                        style: GoogleFonts.outfit(
+                          fontSize: 11,
+                          letterSpacing: 2,
+                          color: AppTheme.primaryColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
 
               const SizedBox(height: 28),
 
@@ -566,25 +600,6 @@ class _PlannerLandingScreenState extends State<PlannerLandingScreen> {
                     return PlannerTaskTile(task: t, date: _selectedDate, showMITStar: false);
                   },
                 ),
-
-              const SizedBox(height: 32),
-
-              // All Tasks Link
-              Center(
-                child: TextButton.icon(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const TasksScreen()),
-                  ),
-                  icon: const Icon(Icons.list_rounded,
-                      size: 16, color: Colors.white24),
-                  label: Text(
-                    'View All Tasks',
-                    style: GoogleFonts.outfit(
-                        color: Colors.white24, fontSize: 13),
-                  ),
-                ),
-              ),
 
               const SizedBox(height: 80), // buffer space for FAB
             ],
